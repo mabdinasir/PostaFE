@@ -1,2 +1,0 @@
-# PostaFE
-Posta Frontend
