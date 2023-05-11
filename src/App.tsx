@@ -1,9 +1,7 @@
-import AppBar  from "./features/appBar/AppBar";
-import { useState } from "react";
+import DrawerAppBar from "./features/appBar/AppBar";
 
-const App = () => {
-    const [state, setState] = useState("");
-    return <AppBar />;
-};
+function App() {
+  return <DrawerAppBar />;
+}
 
 export default App;
