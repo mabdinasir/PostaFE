@@ -1,7 +1,13 @@
+import { ThemeProvider } from "@mui/material/styles";
 import DrawerAppBar from "./features/appBar/AppBar";
+import theme from "./styles/theme";
 
 function App() {
-  return <DrawerAppBar />;
+  return (
+    <ThemeProvider theme={theme}>
+      <DrawerAppBar />;
+    </ThemeProvider>
+  );
 }
 
 export default App;

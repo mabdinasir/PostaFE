@@ -13,9 +13,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { purple } from "@mui/material/colors";
 import { navItems } from "./configs/navItems";
 import useStyles from "./styles/appBar";
 import UserMenu from "./userMenu/UserMenu";
+import theme from "../../styles/theme";
 
 interface DrawerAppBarProps {
   window?: () => Window;
@@ -64,7 +66,7 @@ const DrawerAppBar: FC<DrawerAppBarProps> = ({ window }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Button name="companyName" sx={{ color: "#FFFFFF" }}>
+          <Button name="companyName" sx={{ color: theme.palette.common.white }}>
             <Typography
               variant="h6"
               component="div"
@@ -76,7 +78,7 @@ const DrawerAppBar: FC<DrawerAppBarProps> = ({ window }) => {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }}>
+              <Button key={item} sx={{ color: purple[50] }}>
                 {item}
               </Button>
             ))}

@@ -16,7 +16,7 @@ const useStyles = makeStyles()((theme) => {
         marginRight: theme.spacing(1),
       },
       "&:before": {
-        content: "",
+        content: "''",
         display: "block",
         position: "absolute",
         top: 0,

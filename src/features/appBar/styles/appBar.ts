@@ -1,17 +1,18 @@
 import { makeStyles } from "tss-react/mui";
 import { drawerWidth } from "../configs/config";
+import theme from "../../../styles/theme";
 
 const useStyles = makeStyles()(() => {
   return {
     toolbar: {
-      background: "#493D8A",
+      background: theme.palette.primary.main,
       justifyContent: "space-between",
     },
     drawer: {
       "& .MuiDrawer-paper": {
         boxSizing: "border-box",
         width: drawerWidth,
-        background: "#F5F5F5",
+        background: theme.palette.primary.light,
       },
     },
   };
