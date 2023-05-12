@@ -5,7 +5,7 @@ import grey from "./palette/customPalette/grey";
 
 const theme = createTheme({
   typography: {
-    fontFamily: "Nunito Sans",
+    fontFamily: "Special Elite",
   },
   spacing,
   palette: {

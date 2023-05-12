@@ -33,7 +33,7 @@ const DrawerAppBar: FC<DrawerAppBarProps> = ({ window }) => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+      <Typography variant="h3" sx={{ my: 2 }}>
         Posta
       </Typography>
       <Divider />
@@ -68,7 +68,7 @@ const DrawerAppBar: FC<DrawerAppBarProps> = ({ window }) => {
           </IconButton>
           <Button name="companyName" sx={{ color: theme.palette.common.white }}>
             <Typography
-              variant="h6"
+              variant="h3"
               component="div"
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
