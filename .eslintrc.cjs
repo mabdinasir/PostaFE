@@ -13,6 +13,7 @@ module.exports = {
   ],
   overrides: [],
   parser: "@typescript-eslint/parser",
+  ignorePatterns: ["vite.config.ts"],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
@@ -68,11 +69,10 @@ module.exports = {
     ],
     "react/function-component-definition": [0, { exceptions: "declaration" }],
     "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off",
     "react/prop-types": 0,
     "react-hooks/exhaustive-deps": 0,
     semi: 2,
-    "quotes": [2, "double", { "avoidEscape": true }],
+    quotes: [2, "double", { avoidEscape: true }],
     "import/no-extraneous-dependencies": [
       "error",
       {
