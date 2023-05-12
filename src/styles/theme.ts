@@ -5,7 +5,7 @@ import grey from "./palette/customPalette/grey";
 
 const theme = createTheme({
   typography: {
-    fontFamily: "Special Elite",
+    fontFamily: "Quicksand, Special Elite, cursive",
   },
   spacing,
   palette: {
@@ -14,6 +14,9 @@ const theme = createTheme({
     common: {
       white,
       black,
+    },
+    background: {
+      default: "#F0F8FF",
     },
   },
 });
