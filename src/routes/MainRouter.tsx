@@ -11,7 +11,7 @@ import SignIn from "./SignIn";
 const MainRouter = () => {
   return (
     <Routes>
-      <Route path="" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="home" element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="sendmail" element={<SendMail />} />
