@@ -18,9 +18,10 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { CSSObject, Theme, styled, useTheme } from "@mui/material/styles";
 import { useState } from "react";
-import { FormattedMessage } from "react-intl";
-import { drawerWidth } from "./config";
+import { Link } from "react-router-dom";
 import english from "../../locales/english.json";
+import MainRouter from "../../routes/MainRouter";
+import { drawerWidth } from "./config";
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
@@ -123,9 +124,14 @@ export default function MiniDrawer() {
           </IconButton>
           <Typography
             variant="h2"
+            color="inherit"
             noWrap
-            component="div"
-            sx={{ fontFamily: "Special Elite" }}
+            sx={{
+              fontFamily: "Special Elite",
+              textDecoration: "none",
+            }}
+            component={Link}
+            to="/"
           >
             posta
           </Typography>
@@ -146,6 +152,8 @@ export default function MiniDrawer() {
           {menuItems.map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: "block" }}>
               <ListItemButton
+                component={Link}
+                to={`/${text.split(" ").join("").toLowerCase()}`}
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? "initial" : "center",
@@ -171,6 +179,8 @@ export default function MiniDrawer() {
           {accountItems.map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: "block" }}>
               <ListItemButton
+                component={Link}
+                to={`/${text.toLowerCase().split(" ").join("")}`}
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? "initial" : "center",
@@ -194,12 +204,7 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <Typography paragraph>
-          <FormattedMessage id="welcome" />
-        </Typography>
-        <Typography paragraph>
-          <FormattedMessage id="description" />
-        </Typography>
+        <MainRouter />
       </Box>
     </Box>
   );
