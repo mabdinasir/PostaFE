@@ -1,4 +1,18 @@
 {
   "menuItems": ["Home", "About", "Send mail", "Contact Us"],
-  "accountItems": ["Sign In", "Profile", "Logout"]
+  "accountItems": ["Sign In", "Profile", "Logout"],
+  "signin": "Sign In",
+  "signup": "Sign Up",
+  "rememberMe": "Remember Me",
+  "forgotPassword": "Forgot Password?",
+  "dontHaveAccount": "Don't have an account? Sign Up",
+  "haveAccount": "Already have an account? Sign In",
+  "copyRight": "Copyright © ",
+  "companyName": "Posta ",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "emailAdress": "Email Address",
+  "receiveMarketing": "I want to receive inspiration, marketing promotions and updates via email.",
+  "or": "OR",
+  "signinwithgoogle": "Sign in with Google"
 }
