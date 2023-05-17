@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
+import SignIn from "../features/auth/SignIn";
+import SignUp from "../features/auth/SignUp";
 import About from "./About";
 import Contact from "./Contact";
 import ErrorPage from "./Error";
 import Home from "./Home";
-import Logout from "./Logout";
 import Profile from "./Profile";
 import SendMail from "./SendMail";
-import SignIn from "../features/auth/SignIn";
-import SignUp from "../features/auth/SignUp";
+import Logout from "./Signout";
 
 const MainRouter = () => {
   return (

@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { CircularProgress } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -11,33 +12,47 @@ import Link from "@mui/material/Link";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import jwt_decode from "jwt-decode";
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { FormattedMessage } from "react-intl";
 import Copyright from "../../components/copyright/Copyright";
+import { GoogleLoginResponse } from "../../models/auth/GoogleLoginResponse";
+import User from "../../models/users/User";
+import { useSignInMutation } from "../../redux/slices/auth/authApiSlice";
+import theme from "../../styles/theme";
 import useStyles from "./styles/signin";
 
 const SignIn = () => {
   const { classes } = useStyles();
   const [credentialResponse, setCredentialResponse] = useState<string>("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-  credentialResponse
-    ? console.log(jwt_decode(credentialResponse))
-    : console.log("no token");
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    // const data = new FormData(event.currentTarget);
-    // console.log({
-    //   email: data.get("email"),
-    //   password: data.get("password"),
-    // });
+  const [signInMutation, { isLoading }] = useSignInMutation();
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<User>();
+
+  const onSubmit = async (data: User) => {
+    await signInMutation({
+      email: data.email,
+      password: data.password,
+    });
   };
 
   useEffect(() => {
     google.accounts.id.initialize({
       client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
-      callback: (response) => {
+      callback: async (response) => {
         setCredentialResponse(response.credential);
+        const decodedResponse: GoogleLoginResponse =
+          jwt_decode(credentialResponse);
+
+        await signInMutation({
+          email: decodedResponse.email,
+          password: decodedResponse.email,
+        });
       },
     });
 
@@ -49,6 +64,7 @@ const SignIn = () => {
         shape: "rectangular",
         width: "240",
         type: "standard",
+        locale: "en",
       }
     );
   }, []);
@@ -63,7 +79,7 @@ const SignIn = () => {
       </Box>
       <Typography
         component="h1"
-        variant="h4"
+        variant="h6"
         className={`${classes.common} ${classes.orText}`}
       >
         <FormattedMessage id="or" />
@@ -75,18 +91,22 @@ const SignIn = () => {
         <Typography component="h1" variant="h5">
           <FormattedMessage id="signin" />
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
           <TextField
+            {...register("email", { required: true })}
             margin="normal"
             required
             fullWidth
             id="email"
-            label={<FormattedMessage id="signin" />}
+            label={<FormattedMessage id="email" />}
             name="email"
             autoComplete="email"
             autoFocus
+            error={!!errors.email}
+            helperText={errors.email && <FormattedMessage id="required" />}
           />
           <TextField
+            {...register("password", { required: true })}
             margin="normal"
             required
             fullWidth
@@ -95,6 +115,8 @@ const SignIn = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            error={!!errors.password}
+            helperText={errors.password && <FormattedMessage id="required" />}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -106,7 +128,14 @@ const SignIn = () => {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            <FormattedMessage id="signin" />
+            {isLoading ? (
+              <CircularProgress
+                size={24}
+                sx={{ color: theme.palette.common.white }}
+              />
+            ) : (
+              <FormattedMessage id="signin" />
+            )}
           </Button>
           <Grid container>
             <Grid item xs>

@@ -6,9 +6,9 @@ import About from "./About";
 import Contact from "./Contact";
 import ErrorPage from "./Error";
 import Home from "./Home";
-import Logout from "./Logout";
 import Profile from "./Profile";
 import SendMail from "./SendMail";
+import Logout from "./Signout";
 
 const Router = createBrowserRouter(
   [

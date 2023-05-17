@@ -1,6 +1,6 @@
 {
   "menuItems": ["Home", "About", "Send mail", "Contact Us"],
-  "accountItems": ["Sign In", "Profile", "Logout"],
+  "accountItems": ["Sign In", "Profile", "Sign Out", "Sign Up"],
   "signin": "Sign In",
   "signup": "Sign Up",
   "rememberMe": "Remember Me",
@@ -11,8 +11,9 @@
   "companyName": "Posta ",
   "firstName": "First Name",
   "lastName": "Last Name",
-  "emailAdress": "Email Address",
+  "email": "Email",
   "receiveMarketing": "I want to receive inspiration, marketing promotions and updates via email.",
-  "or": "OR",
-  "signinwithgoogle": "Sign in with Google"
+  "or": "---- or ----",
+  "signinwithgoogle": "Sign in with Google",
+  "required": "This field is required"
 }

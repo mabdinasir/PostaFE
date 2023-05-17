@@ -54,7 +54,7 @@ module.exports = {
     "no-use-before-define": "off",
     "no-shadow": "off",
     "no-multi-spaces": ["error"],
-    "no-unused-vars": 2,
+    "no-unused-vars": 1,
     "react/require-default-props": "off",
     "react/display-name": "off",
     "react/destructuring-assignment": 1,

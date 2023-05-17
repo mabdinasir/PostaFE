@@ -11,10 +11,11 @@ const useStyles = makeStyles()(() => ({
     marginTop: theme.spacing(4),
   },
   googleButton: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(6),
   },
   orText: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(6),
+    color: theme.palette.grey[500],
   },
 }));
 
