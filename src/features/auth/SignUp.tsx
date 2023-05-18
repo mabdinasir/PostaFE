@@ -43,10 +43,6 @@ const SignUp = () => {
     }).unwrap();
   };
 
-  if (isSuccess) {
-    <Navigate to="/signin" replace />;
-  }
-
   return (
     <Container component="main" maxWidth="xs">
       {isSuccess && <Navigate to="/home" replace />}

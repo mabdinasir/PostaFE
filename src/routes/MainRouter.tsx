@@ -7,7 +7,21 @@ import ErrorPage from "./Error";
 import Home from "./Home";
 import Profile from "./Profile";
 import SendMail from "./SendMail";
-import Logout from "./Signout";
+import Settings from "./Settings";
+import Signout from "./Signout";
+import Tracking from "./Tracking";
+
+const isAuthenticated = false;
+
+const AuthRoutes = () => {
+  return (
+    <Routes>
+      <Route path="signin" element={<SignIn />} />
+      <Route path="signup" element={<SignUp />} />
+      <Route path="*" element={<ErrorPage />} />
+    </Routes>
+  );
+};
 
 const MainRouter = () => {
   return (
@@ -15,12 +29,18 @@ const MainRouter = () => {
       <Route path="/" element={<Home />} />
       <Route path="home" element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="sendmail" element={<SendMail />} />
       <Route path="contactus" element={<Contact />} />
-      <Route path="signin" element={<SignIn />} />
-      <Route path="signup" element={<SignUp />} />
-      <Route path="profile" element={<Profile />} />
-      <Route path="logout" element={<Logout />} />
+      <Route path="sendmail" element={<SendMail />} />
+      <Route path="tracking" element={<Tracking />} />
+      {isAuthenticated ? (
+        <>
+          <Route path="profile" element={<Profile />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="signout" element={<Signout />} />
+        </>
+      ) : (
+        <Route path="*" element={<AuthRoutes />} />
+      )}
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );

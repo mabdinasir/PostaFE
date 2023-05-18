@@ -1,8 +1,11 @@
 {
-  "menuItems": ["Home", "About", "Send mail", "Contact Us"],
-  "accountItems": ["Sign In", "Profile", "Sign Out", "Sign Up"],
+  "menuItems": ["Home", "Tracking", "Send Mail"],
+  "infoItems": ["About",  "Contact Us"],
+  "accountItems": ["Profile", "Settings", "Sign Out"],
+  "authItems": ["Sign in", "Sign Up"],
   "signin": "Sign In",
   "signup": "Sign Up",
+  "signout": "Sign Out",
   "rememberMe": "Remember Me",
   "forgotPassword": "Forgot Password?",
   "dontHaveAccount": "Don't have an account? Sign Up",
@@ -15,5 +18,14 @@
   "receiveMarketing": "I want to receive inspiration, marketing promotions and updates via email.",
   "or": "---- or ----",
   "signinwithgoogle": "Sign in with Google",
-  "required": "This field is required"
+  "required": "This field is required",
+  "account": "Account",
+  "settings": "Settings",
+  "tracking": "Tracking",
+  "sendmail": "Send Mail",
+  "opensettings": "Open Settings",
+  "about": "About",
+  "contactus": "Contact Us",
+  "profile": "Profile",
+  "Home": "Home"
 }

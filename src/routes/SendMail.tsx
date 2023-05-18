@@ -1,5 +1,5 @@
 function SendMail() {
-  return <div>SendMail</div>;
+  return <div>Send Mail</div>;
 }
 
 export default SendMail;

@@ -19,9 +19,10 @@ import Typography from "@mui/material/Typography";
 import { CSSObject, Theme, styled, useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { drawerWidth } from "../../helpers/configs/settings";
 import english from "../../locales/english.json";
 import MainRouter from "../../routes/MainRouter";
-import { drawerWidth } from "./config";
+import ProfileMenu from "../profile/ProfileMenu";
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
@@ -95,7 +96,8 @@ const Drawer = styled(MuiDrawer, {
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
-  const { menuItems, accountItems } = english;
+  const { menuItems, infoItems } = english;
+  const isAuthenticated = true;
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -109,7 +111,7 @@ export default function MiniDrawer() {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
-        <Toolbar>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -135,6 +137,7 @@ export default function MiniDrawer() {
           >
             posta
           </Typography>
+          <ProfileMenu isAuthenticated={isAuthenticated} />
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -158,6 +161,9 @@ export default function MiniDrawer() {
                   minHeight: 48,
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
+                  "&:hover": {
+                    bgcolor: "primary.light",
+                  },
                 }}
               >
                 <ListItemIcon
@@ -175,31 +181,36 @@ export default function MiniDrawer() {
           ))}
         </List>
         <Divider />
-        <List>
-          {accountItems.map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                component={Link}
-                to={`/${text.toLowerCase().split(" ").join("")}`}
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
+        <List sx={{ height: "100%" }}>
+          <>
+            {infoItems.map((text, index) => (
+              <ListItem key={text} disablePadding sx={{ display: "block" }}>
+                <ListItemButton
+                  component={Link}
+                  to={`/${text.toLowerCase().split(" ").join("")}`}
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
+                    "&:hover": {
+                      bgcolor: "primary.light",
+                    },
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </>
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
