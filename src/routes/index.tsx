@@ -8,7 +8,9 @@ import ErrorPage from "./Error";
 import Home from "./Home";
 import Profile from "./Profile";
 import SendMail from "./SendMail";
-import Logout from "./Signout";
+import Settings from "./Settings";
+import SignOut from "./Signout";
+import Tracking from "./Tracking";
 
 const Router = createBrowserRouter(
   [
@@ -46,8 +48,16 @@ const Router = createBrowserRouter(
           element: <Profile />,
         },
         {
-          path: "/logout",
-          element: <Logout />,
+          path: "/tracking",
+          element: <Tracking />,
+        },
+        {
+          path: "/settings",
+          element: <Settings />,
+        },
+        {
+          path: "/signout",
+          element: <SignOut />,
         },
       ],
     },

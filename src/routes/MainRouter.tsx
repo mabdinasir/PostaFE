@@ -11,7 +11,7 @@ import Settings from "./Settings";
 import Signout from "./Signout";
 import Tracking from "./Tracking";
 
-const isAuthenticated = false;
+const isAuthenticated = true;
 
 const AuthRoutes = () => {
   return (
