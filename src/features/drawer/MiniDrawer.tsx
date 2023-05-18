@@ -95,7 +95,7 @@ const Drawer = styled(MuiDrawer, {
 
 export default function MiniDrawer() {
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const { menuItems, infoItems } = english;
   const isAuthenticated = true;
 

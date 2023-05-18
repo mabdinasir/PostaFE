@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, IconButton, InputAdornment } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -15,6 +16,7 @@ import jwt_decode from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FormattedMessage } from "react-intl";
+import { useNavigate } from "react-router-dom";
 import Copyright from "../../components/copyright/Copyright";
 import { GoogleLoginResponse } from "../../models/auth/GoogleLoginResponse";
 import User from "../../models/users/User";
@@ -24,9 +26,12 @@ import useStyles from "./styles/signin";
 
 const SignIn = () => {
   const { classes } = useStyles();
+  const navigate = useNavigate();
   const [credentialResponse, setCredentialResponse] = useState<string>("");
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const [signInMutation, { isLoading }] = useSignInMutation();
+  const [signInMutation, { isLoading, isSuccess, data: signinResponseData }] =
+    useSignInMutation();
 
   const {
     handleSubmit,
@@ -68,6 +73,12 @@ const SignIn = () => {
       }
     );
   }, []);
+
+  if (isSuccess) {
+    const jwt = signinResponseData?.jwt;
+    localStorage.setItem("token", JSON.stringify(jwt));
+    navigate("/home", { replace: true });
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -112,11 +123,25 @@ const SignIn = () => {
             fullWidth
             name="password"
             label="Password"
-            type="password"
+            type={showPassword ? "text" : "password"}
             id="password"
             autoComplete="current-password"
             error={!!errors.password}
             helperText={errors.password && <FormattedMessage id="required" />}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={() => setShowPassword(!showPassword)}
+                    onMouseDown={(event) => event.preventDefault()}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
