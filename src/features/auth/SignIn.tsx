@@ -16,7 +16,6 @@ import jwt_decode from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
 import Copyright from "../../components/copyright/Copyright";
 import { GoogleLoginResponse } from "../../models/auth/GoogleLoginResponse";
 import User from "../../models/users/User";
@@ -26,12 +25,11 @@ import useStyles from "./styles/signin";
 
 const SignIn = () => {
   const { classes } = useStyles();
-  const navigate = useNavigate();
+
   const [credentialResponse, setCredentialResponse] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const [signInMutation, { isLoading, isSuccess, data: signinResponseData }] =
-    useSignInMutation();
+  const [signInMutation, { isLoading }] = useSignInMutation();
 
   const {
     handleSubmit,
@@ -73,12 +71,6 @@ const SignIn = () => {
       }
     );
   }, []);
-
-  if (isSuccess) {
-    const jwt = signinResponseData?.jwt;
-    localStorage.setItem("token", JSON.stringify(jwt));
-    navigate("/home", { replace: true });
-  }
 
   return (
     <Container component="main" maxWidth="xs">

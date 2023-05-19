@@ -137,7 +137,7 @@ export default function MiniDrawer() {
           >
             posta
           </Typography>
-          <ProfileMenu isAuthenticated={isAuthenticated} />
+          <ProfileMenu isAuthenticated={!!isAuthenticated} />
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
