@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import SignIn from "../features/auth/SignIn";
 import SignUp from "../features/auth/SignUp";
+import useCurrentUser from "../helpers/customHooks/useCurrentUser";
 import About from "./About";
 import Contact from "./Contact";
 import ErrorPage from "./Error";
@@ -10,8 +11,6 @@ import SendMail from "./SendMail";
 import Settings from "./Settings";
 import Signout from "./Signout";
 import Tracking from "./Tracking";
-
-const isAuthenticated = true;
 
 const AuthRoutes = () => {
   return (
@@ -24,6 +23,8 @@ const AuthRoutes = () => {
 };
 
 const MainRouter = () => {
+  const currentUser = useCurrentUser();
+  const isAuthenticated = currentUser?.isSignedIn;
   return (
     <Routes>
       <Route path="/" element={<Home />} />

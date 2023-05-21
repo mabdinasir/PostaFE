@@ -20,6 +20,7 @@ import { CSSObject, Theme, styled, useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { drawerWidth } from "../../helpers/configs/settings";
+import useCurrentUser from "../../helpers/customHooks/useCurrentUser";
 import english from "../../locales/english.json";
 import MainRouter from "../../routes/MainRouter";
 import ProfileMenu from "../profile/ProfileMenu";
@@ -97,7 +98,8 @@ export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = useState(true);
   const { menuItems, infoItems } = english;
-  const isAuthenticated = true;
+  const currentUser = useCurrentUser();
+  const isAuthenticated = currentUser?.isSignedIn;
 
   const handleDrawerOpen = () => {
     setOpen(true);

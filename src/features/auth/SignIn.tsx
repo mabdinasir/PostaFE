@@ -16,7 +16,9 @@ import jwt_decode from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FormattedMessage } from "react-intl";
+import { Navigate } from "react-router-dom";
 import Copyright from "../../components/copyright/Copyright";
+import useLocalStorage from "../../helpers/customHooks/useLocalStorage";
 import { GoogleLoginResponse } from "../../models/auth/GoogleLoginResponse";
 import User from "../../models/users/User";
 import { useSignInMutation } from "../../redux/slices/auth/authApiSlice";
@@ -28,8 +30,8 @@ const SignIn = () => {
 
   const [credentialResponse, setCredentialResponse] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
-
-  const [signInMutation, { isLoading }] = useSignInMutation();
+  const { setLocalStorage } = useLocalStorage();
+  const [signInMutation, { isLoading, isSuccess }] = useSignInMutation();
 
   const {
     handleSubmit,
@@ -38,10 +40,11 @@ const SignIn = () => {
   } = useForm<User>();
 
   const onSubmit = async (data: User) => {
-    await signInMutation({
+    const result = await signInMutation({
       email: data.email,
       password: data.password,
-    });
+    }).unwrap();
+    setLocalStorage("jwt", JSON.stringify(result.jwt));
   };
 
   useEffect(() => {
@@ -74,6 +77,7 @@ const SignIn = () => {
 
   return (
     <Container component="main" maxWidth="xs">
+      {isSuccess && <Navigate to="/home" replace />}
       <Box>
         <div
           id="signin-button"

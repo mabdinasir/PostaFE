@@ -15,7 +15,9 @@ import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FormattedMessage } from "react-intl";
+import { Navigate } from "react-router-dom";
 import Copyright from "../../components/copyright/Copyright";
+import useLocalStorage from "../../helpers/customHooks/useLocalStorage";
 import { SignUpFormFields } from "../../models/auth/SignUpFormFields";
 import { useSignUpMutation } from "../../redux/slices/auth/authApiSlice";
 import theme from "../../styles/theme";
@@ -24,6 +26,7 @@ import useStyles from "./styles/signup";
 const SignUp = () => {
   const { classes } = useStyles();
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const { setLocalStorage } = useLocalStorage();
 
   const {
     handleSubmit,
@@ -31,19 +34,21 @@ const SignUp = () => {
     formState: { errors },
   } = useForm<SignUpFormFields>();
 
-  const [signUpMutation, { isLoading }] = useSignUpMutation();
+  const [signUpMutation, { isLoading, isSuccess }] = useSignUpMutation();
 
   const onSubmit = async (data: SignUpFormFields) => {
-    await signUpMutation({
+    const result = await signUpMutation({
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email,
       password: data.password,
     }).unwrap();
+    setLocalStorage("jwt", JSON.stringify(result.jwt));
   };
 
   return (
     <Container component="main" maxWidth="xs">
+      {isSuccess && <Navigate to="/home" replace />}
       <Box className={classes.signinContainer}>
         <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
           <LockOutlinedIcon />
