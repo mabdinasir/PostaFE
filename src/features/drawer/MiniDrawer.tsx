@@ -18,6 +18,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { CSSObject, Theme, styled, useTheme } from "@mui/material/styles";
 import { useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import { drawerWidth } from "../../helpers/configs/settings";
 import useCurrentUser from "../../helpers/customHooks/useCurrentUser";
@@ -137,7 +138,7 @@ export default function MiniDrawer() {
             component={Link}
             to="/"
           >
-            posta
+            <FormattedMessage id="companyName" />
           </Typography>
           <ProfileMenu isAuthenticated={!!isAuthenticated} />
         </Toolbar>
@@ -215,8 +216,10 @@ export default function MiniDrawer() {
           </>
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
+      <Box component="main" sx={{ flexGrow: 1 }}>
+        <Box component="main" sx={{ px: 3, pt: 2 }}>
+          <DrawerHeader />
+        </Box>
         <MainRouter />
       </Box>
     </Box>

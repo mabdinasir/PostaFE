@@ -1,8 +1,18 @@
 {
   "menuItems": ["Home", "Tracking", "Send Mail"],
-  "infoItems": ["About",  "Contact Us"],
+  "infoItems": ["About", "Contact Us"],
   "accountItems": ["Profile", "Admin", "Settings", "Sign Out"],
   "authItems": ["Sign in", "Sign Up"],
+  "adminTabItems": [
+    "Users",
+    "User Types",
+    "Locations",
+    "Mail",
+    "Mail Types",
+    "Mail Statuses",
+    "Mail History",
+    "Mail Tracking"
+  ],
   "signin": "Sign In",
   "signup": "Sign Up",
   "signout": "Sign Out",
@@ -28,5 +38,13 @@
   "contactus": "Contact Us",
   "profile": "Profile",
   "Home": "Home",
-  "admin": "Admin"
+  "admin": "Admin",
+  "Users": "Users",
+  "User Types": "User Types",
+  "Locations": "Locations",
+  "Mail Types": "Mail Types",
+  "Mail Statuses": "Mail Statuses",
+  "Mail": "Mail",
+  "Mail History": "Mail History",
+  "Mail Tracking": "Mail Tracking"
 }

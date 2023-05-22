@@ -1,5 +1,18 @@
+import { Box } from "@mui/material";
+import AdminTabs from "./AdminTabs";
+
 const Admin = () => {
-  return <div>Admin</div>;
+  return (
+    <Box
+      style={{
+        alignItems: "center",
+        justifyContent: "center",
+        display: "flex",
+      }}
+    >
+      <AdminTabs />
+    </Box>
+  );
 };
 
 export default Admin;
