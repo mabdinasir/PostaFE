@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import Admin from "../features/admin/Admin";
 import SignIn from "../features/auth/SignIn";
 import SignUp from "../features/auth/SignUp";
 import useCurrentUser from "../helpers/customHooks/useCurrentUser";
@@ -36,6 +37,7 @@ const MainRouter = () => {
       {isAuthenticated ? (
         <>
           <Route path="profile" element={<Profile />} />
+          <Route path="admin" element={<Admin />} />
           <Route path="settings" element={<Settings />} />
           <Route path="signout" element={<Signout />} />
         </>

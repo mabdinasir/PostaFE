@@ -1,7 +1,7 @@
 {
   "menuItems": ["Home", "Tracking", "Send Mail"],
   "infoItems": ["About",  "Contact Us"],
-  "accountItems": ["Profile", "Settings", "Sign Out"],
+  "accountItems": ["Profile", "Admin", "Settings", "Sign Out"],
   "authItems": ["Sign in", "Sign Up"],
   "signin": "Sign In",
   "signup": "Sign Up",
@@ -27,5 +27,6 @@
   "about": "About",
   "contactus": "Contact Us",
   "profile": "Profile",
-  "Home": "Home"
+  "Home": "Home",
+  "admin": "Admin"
 }

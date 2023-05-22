@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Admin from "../features/admin/Admin";
 import SignIn from "../features/auth/SignIn";
 import SignUp from "../features/auth/SignUp";
 import MiniDrawer from "../features/drawer/MiniDrawer";
@@ -36,24 +37,28 @@ const Router = createBrowserRouter(
           element: <Contact />,
         },
         {
-          path: "/signin",
-          element: <SignIn />,
-        },
-        {
-          path: "/signup",
-          element: <SignUp />,
+          path: "/tracking",
+          element: <Tracking />,
         },
         {
           path: "/profile",
           element: <Profile />,
         },
         {
-          path: "/tracking",
-          element: <Tracking />,
+          path: "/admin",
+          element: <Admin />,
         },
         {
           path: "/settings",
           element: <Settings />,
+        },
+        {
+          path: "/signup",
+          element: <SignUp />,
+        },
+        {
+          path: "/signin",
+          element: <SignIn />,
         },
         {
           path: "/signout",

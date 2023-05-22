@@ -37,7 +37,7 @@ const ProfileMenu: FC<ProfileMenuProps> = ({
   return (
     <Box sx={{ flexGrow: 0 }}>
       <Tooltip title={<FormattedMessage id="opensettings" />}>
-        <IconButton onClick={handleClick} sx={{ p: 0 }}>
+        <IconButton onClick={handleClick}>
           <Avatar alt="Remy Sharp" />
         </IconButton>
       </Tooltip>
@@ -92,7 +92,7 @@ const ProfileMenu: FC<ProfileMenuProps> = ({
               to={`/${item.label.toLowerCase().replace(/\s+/g, "")}`}
               sx={{
                 minHeight: 48,
-                justifyContent: open ? "initial" : "center",
+                justifyContent: open ? "space-between" : "center",
                 px: 2.5,
                 "&:hover": {
                   bgcolor: "transparent",
