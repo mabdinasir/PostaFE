@@ -1,17 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
+import Admin from "../features/admin/Admin";
 import SignIn from "../features/auth/SignIn";
 import SignUp from "../features/auth/SignUp";
 import MiniDrawer from "../features/drawer/MiniDrawer";
+import Profile from "../features/profile/Profile";
 import About from "./About";
 import Contact from "./Contact";
 import ErrorPage from "./Error";
 import Home from "./Home";
-import Profile from "./Profile";
 import SendMail from "./SendMail";
 import Settings from "./Settings";
 import SignOut from "./Signout";
 import Tracking from "./Tracking";
-import Admin from "../features/admin/Admin";
 
 const Router = createBrowserRouter(
   [

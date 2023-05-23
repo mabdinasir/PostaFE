@@ -6,7 +6,7 @@ type UsersProps = {
   //
 };
 
-const Users: FC<UsersProps> = () => {
+const UsersList: FC<UsersProps> = () => {
   const { data, error, isSuccess, isLoading } = useGetUsersQuery();
   const rows = isSuccess ? data?.users : [];
   console.log(rows);
@@ -30,4 +30,4 @@ const Users: FC<UsersProps> = () => {
   );
 };
 
-export default Users;
+export default UsersList;

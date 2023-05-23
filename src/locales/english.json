@@ -1,18 +1,4 @@
 {
-  "menuItems": ["Home", "Tracking", "Send Mail"],
-  "infoItems": ["About", "Contact Us"],
-  "accountItems": ["Profile", "Admin", "Settings", "Sign Out"],
-  "authItems": ["Sign in", "Sign Up"],
-  "adminTabItems": [
-    "Users",
-    "User Types",
-    "Locations",
-    "Mail",
-    "Mail Types",
-    "Mail Statuses",
-    "Mail History",
-    "Mail Tracking"
-  ],
   "signin": "Sign In",
   "signup": "Sign Up",
   "signout": "Sign Out",

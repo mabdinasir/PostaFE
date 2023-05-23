@@ -21,10 +21,10 @@ import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import useCurrentUser from "../../helpers/customHooks/useCurrentUser";
-import english from "../../locales/english.json";
 import MainRouter from "../../routes/MainRouter";
-import ProfileMenu from "../profile/ProfileMenu";
 import { drawerWidth } from "../../settings/global";
+import hardCodedData from "../../settings/hardCodedData.json";
+import ProfileMenu from "../profile/ProfileMenu";
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
@@ -98,7 +98,7 @@ const Drawer = styled(MuiDrawer, {
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = useState(true);
-  const { menuItems, infoItems } = english;
+  const { menuItems, infoItems } = hardCodedData;
   const currentUser = useCurrentUser();
   const isAuthenticated = currentUser?.isSignedIn;
 

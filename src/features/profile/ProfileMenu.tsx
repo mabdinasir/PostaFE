@@ -10,7 +10,7 @@ import { FC } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import mapItemsToIcons from "../../helpers/menuItemToIcon";
-import english from "../../locales/english.json";
+import hardCodedData from "../../settings/hardCodedData.json";
 
 type ProfileMenuProps = {
   isAuthenticated: boolean;
@@ -19,7 +19,7 @@ type ProfileMenuProps = {
 const ProfileMenu: FC<ProfileMenuProps> = ({
   isAuthenticated,
 }): JSX.Element => {
-  const { authItems, accountItems } = english;
+  const { authItems, accountItems } = hardCodedData;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
