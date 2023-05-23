@@ -1,17 +1,12 @@
-import { Box } from "@mui/material";
-import AdminTabs from "./AdminTabs";
+import Container from "../../components/Container";
+import CustomAppBar from "../../components/Header/CustomAppBar";
 
 const Admin = () => {
   return (
-    <Box
-      style={{
-        alignItems: "center",
-        justifyContent: "center",
-        display: "flex",
-      }}
-    >
-      <AdminTabs />
-    </Box>
+    <>
+      <CustomAppBar titleId="admin" />
+      <Container>{/* <Users /> */}</Container>
+    </>
   );
 };
 

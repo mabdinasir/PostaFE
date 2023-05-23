@@ -20,11 +20,11 @@ import { CSSObject, Theme, styled, useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
-import { drawerWidth } from "../../helpers/configs/settings";
 import useCurrentUser from "../../helpers/customHooks/useCurrentUser";
 import english from "../../locales/english.json";
 import MainRouter from "../../routes/MainRouter";
 import ProfileMenu from "../profile/ProfileMenu";
+import { drawerWidth } from "../../settings/global";
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,

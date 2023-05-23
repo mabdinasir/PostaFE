@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import Admin from "../features/admin/Admin";
 import SignIn from "../features/auth/SignIn";
 import SignUp from "../features/auth/SignUp";
 import MiniDrawer from "../features/drawer/MiniDrawer";
@@ -12,6 +11,7 @@ import SendMail from "./SendMail";
 import Settings from "./Settings";
 import SignOut from "./Signout";
 import Tracking from "./Tracking";
+import Admin from "../features/admin/Admin";
 
 const Router = createBrowserRouter(
   [
@@ -45,10 +45,6 @@ const Router = createBrowserRouter(
           element: <Profile />,
         },
         {
-          path: "/admin",
-          element: <Admin />,
-        },
-        {
           path: "/settings",
           element: <Settings />,
         },
@@ -65,6 +61,10 @@ const Router = createBrowserRouter(
           element: <SignOut />,
         },
       ],
+    },
+    {
+      path: "/admin",
+      element: <Admin />,
     },
   ],
   {
