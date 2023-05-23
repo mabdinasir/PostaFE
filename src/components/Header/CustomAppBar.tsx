@@ -1,31 +1,57 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import AppBar from "@mui/material/AppBar";
+import { CssBaseline, IconButton, Toolbar, Typography } from "@mui/material";
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
 import { FC } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
+import { drawerWidth } from "../../settings/global";
+
+interface AppBarProps extends MuiAppBarProps {
+  open?: boolean;
+}
+
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== "open",
+})<AppBarProps>(({ theme, open }) => ({
+  transition: theme.transitions.create(["margin", "width"], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: `${drawerWidth}px`,
+    transition: theme.transitions.create(["margin", "width"], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}));
 
 type CustomAppBarProps = {
-  titleId: string;
+  title: string;
   backButton?: boolean;
 };
 
-const CustomAppBar: FC<CustomAppBarProps> = ({
-  titleId,
-  backButton = true,
-}) => {
+const CustomAppBar: FC<CustomAppBarProps> = ({ title, backButton = true }) => {
   const navigate = useNavigate();
 
   const handleBackClick = () => {
-    navigate(-1);
+    navigate("/");
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box
+      position="fixed"
+      sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+    >
+      <CssBaseline />
+      <AppBar
+        position="fixed"
+        open
+        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+      >
         <Toolbar>
           {backButton && (
             <IconButton
@@ -40,8 +66,7 @@ const CustomAppBar: FC<CustomAppBarProps> = ({
             </IconButton>
           )}
           <Typography
-            variant="h2"
-            component="div"
+            variant="h3"
             sx={{
               flexGrow: 1,
               fontFamily: "Special Elite",
@@ -49,7 +74,7 @@ const CustomAppBar: FC<CustomAppBarProps> = ({
               ...(!backButton && { marginLeft: 3 }),
             }}
           >
-            <FormattedMessage id={titleId} />
+            <FormattedMessage id={title} />
           </Typography>
         </Toolbar>
       </AppBar>

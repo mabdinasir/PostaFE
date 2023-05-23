@@ -19,9 +19,9 @@ import Typography from "@mui/material/Typography";
 import { CSSObject, Theme, styled, useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import DrawerHeader from "../../components/Header/DrawerHeader";
 import useCurrentUser from "../../helpers/customHooks/useCurrentUser";
-import MainRouter from "../../routes/MainRouter";
 import { drawerWidth } from "../../settings/global";
 import hardCodedData from "../../settings/hardCodedData.json";
 import ProfileMenu from "../profile/ProfileMenu";
@@ -46,15 +46,6 @@ const closedMixin = (theme: Theme): CSSObject => ({
     width: `calc(${theme.spacing(8)} + 1px)`,
   },
 });
-
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-end",
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-}));
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -220,7 +211,7 @@ export default function MiniDrawer() {
         <Box component="main" sx={{ px: 3, pt: 2 }}>
           <DrawerHeader />
         </Box>
-        <MainRouter />
+        <Outlet />
       </Box>
     </Box>
   );

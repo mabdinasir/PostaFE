@@ -26,6 +26,7 @@ const AuthRoutes = () => {
 const MainRouter = () => {
   const currentUser = useCurrentUser();
   const isAuthenticated = currentUser?.isSignedIn;
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -37,7 +38,7 @@ const MainRouter = () => {
       {isAuthenticated ? (
         <>
           <Route path="profile" element={<Profile />} />
-          <Route path="admin" element={<Admin />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="settings" element={<Settings />} />
           <Route path="signout" element={<Signout />} />
         </>

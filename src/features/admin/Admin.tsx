@@ -1,11 +1,13 @@
-import Container from "../../components/Container";
 import CustomAppBar from "../../components/Header/CustomAppBar";
+import PermanentDrawer from "../../components/Menu/PermanentDrawer";
+import hardCodedData from "../../settings/hardCodedData.json";
 
 const Admin = () => {
+  const { adminTabItems } = hardCodedData;
   return (
     <>
-      <CustomAppBar titleId="admin" />
-      <Container>{/* <Users /> */}</Container>
+      <CustomAppBar title="admin" />
+      <PermanentDrawer items={adminTabItems} />
     </>
   );
 };

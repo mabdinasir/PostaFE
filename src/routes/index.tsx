@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Admin from "../features/admin/Admin";
+import UserTypesList from "../features/admin/users/UserTypesList";
+import UsersList from "../features/admin/users/UsersList";
 import SignIn from "../features/auth/SignIn";
 import SignUp from "../features/auth/SignUp";
 import MiniDrawer from "../features/drawer/MiniDrawer";
@@ -65,6 +67,17 @@ const Router = createBrowserRouter(
     {
       path: "/admin",
       element: <Admin />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          path: "/admin/users",
+          element: <UsersList />,
+        },
+        {
+          path: "/admin/usertypes",
+          element: <UserTypesList />,
+        },
+      ],
     },
   ],
   {
