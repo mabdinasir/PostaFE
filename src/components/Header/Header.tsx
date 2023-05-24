@@ -14,7 +14,7 @@ const Header: FC<HeaderProps> = ({ title, children }) => {
       alignItems="center"
       sx={{ mb: 2, py: 0.5 }}
     >
-      <Typography variant="h5">{title}</Typography>
+      <Typography variant="h4">{title}</Typography>
       {children}
     </Stack>
   );

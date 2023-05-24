@@ -13,8 +13,8 @@ const StyledDataGrid = styled(DataGridPro)(
     borderLeft: "none",
     borderRight: "none",
     [`& .${gridClasses.columnHeaderTitle}`]: {
-      fontWeight: 500,
-      fontSize: theme.typography.body2.fontSize,
+      fontWeight: 400,
+      fontSize: theme.typography.h5.fontSize,
     },
     [`& .${gridClasses.menuIcon}`]: {
       marginRight: theme.spacing(0.25),

@@ -44,7 +44,11 @@ const CustomAppBar: FC<CustomAppBarProps> = ({ title, backButton = true }) => {
   return (
     <Box
       position="fixed"
-      sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+      sx={{
+        width: `calc(100% - ${drawerWidth}px)`,
+        ml: `${drawerWidth}px`,
+        zIndex: 1000,
+      }}
     >
       <CssBaseline />
       <AppBar

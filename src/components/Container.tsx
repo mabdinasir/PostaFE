@@ -12,6 +12,7 @@ const Container: FC<ContainerProps> = ({ children }) => {
       elevation={3}
       sx={{
         height: "100vh",
+        width: "100%",
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-start",
