@@ -6,12 +6,12 @@ interface User {
   lastName: string;
   isGoogleAuth: boolean;
   isEmailVerified: boolean;
-  isDeleted?: boolean;
-  isSignedIn?: boolean;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  updatedBy?: string;
-  userTypeId?: string;
+  isDeleted: boolean;
+  isSignedIn: boolean;
+  createdAt: Date | string;
+  updatedAt: Date | string;
+  updatedBy: string;
+  userTypeId: string;
 }
 
 export default User;

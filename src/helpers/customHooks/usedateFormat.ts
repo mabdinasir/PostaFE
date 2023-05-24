@@ -11,7 +11,7 @@ export enum DateFormatVariants {
 }
 
 export const useDateFormat = () => {
-  const isDayMonthYearFormat = true; // Example value for isDayMonthYearFormat
+  const isDayMonthYearFormat = true;
 
   return useCallback(
     (
@@ -43,7 +43,7 @@ export const useDateFormat = () => {
             isDayMonthYearFormat ? "dd/MM/yyyy" : "MM/dd/yyyy"
           );
         case DateFormatVariants.Time:
-          return dateObj.toFormat("T", { locale: "fr" });
+          return dateObj.toFormat("T");
         case DateFormatVariants.WithSystemFormatTime:
           return dateObj.toFormat(
             isDayMonthYearFormat ? "d MMM yyyy h:mm a" : "MMM d yyyy h:mm a"
