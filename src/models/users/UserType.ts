@@ -1,12 +1,11 @@
-import User from "./User";
-
 interface UserType {
   id: string;
-  type: string;
-  createdAt: string;
-  updatedAt: string;
-  updatedBy: string;
-  User: User[];
+  name: string;
+  createdAt?: Date | string;
+  createdBy?: string;
+  updatedAt: Date | string;
+  updatedBy?: string;
+  users?: UserType[];
 }
 
 export default UserType;

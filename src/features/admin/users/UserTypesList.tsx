@@ -20,13 +20,13 @@ const UserTypesList: FC<UsersProps> = () => {
   const formatDate = useDateFormat();
 
   const columns: GridColDef<UserType>[] = [
-    { field: "id", headerName: "User Type ID", flex: 1 },
-    { field: "type", headerName: "User Type", flex: 1 },
+    { field: "id", headerName: "Type ID", flex: 1 },
+    { field: "name", headerName: "Type Name", flex: 1 },
     {
       field: "User",
       headerName: "Users",
       flex: 1,
-      valueGetter: (params) => params.row.User.length,
+      valueGetter: (params) => params.row.users?.length,
     },
     {
       field: "createdAt",

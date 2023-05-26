@@ -1,5 +1,7 @@
+import UserType from "./UserType";
+
 interface User {
-  id?: string;
+  id: string;
   email: string;
   password: string;
   firstName: string;
@@ -9,9 +11,10 @@ interface User {
   isDeleted: boolean;
   isSignedIn: boolean;
   createdAt: Date | string;
+  createdBy?: string | null;
   updatedAt: Date | string;
-  updatedBy: string;
-  userTypeId: string;
+  updatedBy?: string | null;
+  userTypes?: UserType[];
 }
 
 export default User;

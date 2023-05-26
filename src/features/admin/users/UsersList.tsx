@@ -39,7 +39,12 @@ const UsersList: FC<UsersProps> = () => {
       valueFormatter: (params) =>
         formatDate(params.value, DateFormatVariants.Short),
     },
-    { field: "userTypeId", headerName: "User Type", flex: 1 },
+    {
+      field: "UserTypes",
+      headerName: "User Type",
+      flex: 1,
+      valueGetter: (params) => params.row.userTypes?.map((type) => type.name),
+    },
   ];
 
   return (
